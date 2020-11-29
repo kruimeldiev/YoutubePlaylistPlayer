@@ -9,11 +9,11 @@ import Foundation
 
 struct VideoViewModel {
     
-    var videoId: String = ""
-    var title: String = ""
-    var description: String = ""
-    var thumbnail: String = ""
-    var publishDate: String = ""
+    var videoId: String
+    var title: String
+    var description: String
+    var thumbnail: String
+    var publishDate: Date
     
     init(video: VideoModel) {
         self.videoId = video.videoId

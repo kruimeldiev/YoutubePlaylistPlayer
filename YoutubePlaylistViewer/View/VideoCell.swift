@@ -15,10 +15,17 @@ class VideoCell: UITableViewCell {
     
     func makeCell(video: VideoViewModel) {
         
+        // Thumbnail van de VideoCell instellen
         Service.getThumbnail(video: video) { thumbnail in
             self.thumbnailView.image = thumbnail
         }
+        
+        // TitleLabel van de VideoCell instellen
         self.titleLabel.text = video.title
-        self.dateLabel.text = video.publishDate
+        
+        // DateLabel van de VideoCell instellen
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMMM yyyy"
+        self.dateLabel.text = dateFormatter.string(from: video.publishDate)
     }
 }

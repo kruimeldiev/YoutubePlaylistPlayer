@@ -13,7 +13,7 @@ struct VideoModel: Decodable {
     var title: String
     var description: String
     var thumbnail: String
-    var publishDate: String
+    var publishDate: Date
     
     enum VideoModelCodingKeys: String, CodingKey {
         
@@ -44,7 +44,7 @@ struct VideoModel: Decodable {
         // Alle variabelen van de video instellen
         self.title = try snippetContainer.decode(String.self, forKey: .title)
         self.description = try snippetContainer.decode(String.self, forKey: .description)
-        self.publishDate = try snippetContainer.decode(String.self, forKey: .publishDate)
+        self.publishDate = try snippetContainer.decode(Date.self, forKey: .publishDate)
         self.thumbnail = try highContainer.decode(String.self, forKey: .thumbnail)
         self.videoId = try resourceIdContainer.decode(String.self, forKey: .videoId)
     }

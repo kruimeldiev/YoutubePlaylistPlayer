@@ -25,12 +25,20 @@ struct Service {
             
             if data != nil {
                 do {
-                    let playlist = try JSONDecoder().decode(PlaylistModel.self, from: data!)
+                    // Deze dateDecodingStrategy is nodig om de String (publishedAt) van de API om te zetten naar een Date voor de Model
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+                    
+                    // JSON parsing
+                    let playlist = try decoder.decode(PlaylistModel.self, from: data!)
+                    
+                    // PlaylistModel doorsturen met gebruik van de CompletionHandler
                     DispatchQueue.main.async {
                         completion(playlist)
                     }
                 } catch {
                     print("Error tijdens JSON parsing van de playlist")
+                    print(error)
                 }
             }
         }.resume()
@@ -59,9 +67,12 @@ struct Service {
             }
             
             if data != nil {
+                
                 DispatchQueue.main.async {
+                    // Data in cache opslaan
                     CacheManager.setVideoCache(video.thumbnail, data!)
                     print("Thumbnail gedownload uit API")
+                    // thumbnail doorsturen met behulp van Completion Handler
                     thumbnail = UIImage(data: data!)
                     completion(thumbnail!)
                 }

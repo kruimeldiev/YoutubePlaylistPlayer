@@ -13,6 +13,7 @@ class PlaylistController: UIViewController {
     
     var playlist = [VideoViewModel]() {
         didSet {
+            // Dankzij deze didSet methode wordt de playlistTableView ververst iedere keer wanneer de data van de playlist wordt aangepast
             playlistTableView.reloadData()
         }
     }
@@ -20,7 +21,12 @@ class PlaylistController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Hier wordt de dataSource van de TableView ingesteld
+        // Omdat de extension van de PlaylistViewController een UITableViewDataSource is, kun je deze als self instellen
         playlistTableView.dataSource = self
+        
+        // Instellen van de delegate van de TableView
+        // De delegate regelt alle user interactions in de TableView
         playlistTableView.delegate = self
 
         self.fetchPlaylist()
@@ -41,12 +47,15 @@ extension PlaylistController: UITableViewDataSource, UITableViewDelegate {
         return self.playlist.count
     }
     
+    // Deze functie bepaald wat de data is die in iedere row van de TableView weergegeven wordt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = playlistTableView.dequeueReusableCell(withIdentifier: "VideoCell", for: indexPath) as! VideoCell
         
+        // De data (video) ophalen om in de cell te plaatsen
         let video = playlist[indexPath.row]
         
+        // VideoCell maken met de video
         cell.makeCell(video: video)
         
         return cell
