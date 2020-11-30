@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AFB15E162574FB23002F83F1 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB15E152574FB23002F83F1 /* VideoController.swift */; };
 		AFED7DD72573D55E008EA549 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED7DD62573D55E008EA549 /* AppDelegate.swift */; };
 		AFED7DD92573D55E008EA549 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED7DD82573D55E008EA549 /* SceneDelegate.swift */; };
 		AFED7DDE2573D55E008EA549 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFED7DDC2573D55E008EA549 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AFB15E152574FB23002F83F1 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
 		AFED7DD32573D55E008EA549 /* YoutubePlaylistViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoutubePlaylistViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFED7DD62573D55E008EA549 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFED7DD82573D55E008EA549 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				AFED7E0A2573E5D6008EA549 /* PlaylistController.swift */,
+				AFB15E152574FB23002F83F1 /* VideoController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				AFED7E062573E4C5008EA549 /* Service.swift in Sources */,
 				AFED7E0F257401BC008EA549 /* VideoCell.swift in Sources */,
 				AFED7E1C2574431E008EA549 /* CacheManager.swift in Sources */,
+				AFB15E162574FB23002F83F1 /* VideoController.swift in Sources */,
 				AFED7DFF2573DECB008EA549 /* VideoViewModel.swift in Sources */,
 				AFED7E0B2573E5D6008EA549 /* PlaylistController.swift in Sources */,
 				AFED7DF62573D76C008EA549 /* Constants.swift in Sources */,

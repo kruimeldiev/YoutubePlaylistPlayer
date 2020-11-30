@@ -21,6 +21,8 @@ class PlaylistController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Playlist"
+        
         // Hier wordt de dataSource van de TableView ingesteld
         // Omdat de extension van de PlaylistViewController een UITableViewDataSource is, kun je deze als self instellen
         playlistTableView.dataSource = self
@@ -30,6 +32,21 @@ class PlaylistController: UIViewController {
         playlistTableView.delegate = self
 
         self.fetchPlaylist()
+    }
+    
+    // Deze functie wordt aangeroepen wanneer de VideoView wordt geopent
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Controlleren of er een row is geselecteerd
+        guard playlistTableView.indexPathForSelectedRow != nil else {
+            return
+        }
+        
+        let geselecteerdeVideo = playlist[playlistTableView.indexPathForSelectedRow!.row]
+        
+        let videoVC = segue.destination as! VideoController
+        
+        videoVC.video = geselecteerdeVideo
     }
     
     // Functie om de playlist te downloaden
@@ -59,11 +76,6 @@ extension PlaylistController: UITableViewDataSource, UITableViewDelegate {
         cell.makeCell(video: video)
         
         return cell
-    }
-    
-    // Deze functie wordt uitgevoerd wanneer de gebruiker op een row klikt
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
     
 }
